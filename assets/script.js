@@ -17,14 +17,7 @@ const slides = [
 	}
 ]
 
-/*const emplacementFléche = () => {
-	const bannerFléche = document.getElementById("banner")
-	const flécheGauche = document.createElement(".arrow_left")
-	const flécheDroite = document.createElement(".arrow_right")
-	flécheGauche.setAttribute = ("src","images/arrow_left.png")
-	bannerFléche.appendChild(flécheGauche)
-}
-emplacementFléche()*/
+
 const emplacementFleche = () => {
     const bannerFleche = document.getElementById("banner");
     
