@@ -45,7 +45,9 @@ emplacementFleche();
 
 // Récupérer les éléments flecheGauche et flecheDroite en dehors de la fonction défilementImage pour les rendre accessibles globalement
 const flecheGauche = document.querySelector(".arrow_left");
+flecheGauche.style.position = "relative"
 const flecheDroite = document.querySelector(".arrow_right");
+flecheDroite.style.position = "relative"
 
 const défilementImage = () => {
     let i = 0;
@@ -55,17 +57,17 @@ const défilementImage = () => {
     // Ajouter un écouteur d'événement sur la flèche droite
     flecheDroite.addEventListener("click", (e) => {
         // Incrémenter l'index pour passer à la prochaine image
-        
+        i = (i + 1) % slides.length;
         afficherImageCourante();
-        i++
+        
     });
 
     // Ajouter un écouteur d'événement sur la flèche gauche
     flecheGauche.addEventListener("click", (e) => {
         // Décrémenter l'index pour revenir à l'image précédente
-        
+        i = (i - 1 + slides.length) % slides.length;
         afficherImageCourante();
-        i--
+        
     });
 
 	 // Fonction pour afficher l'image courante
@@ -74,16 +76,22 @@ const défilementImage = () => {
         const imageCourante = slides[i].image;
         const tagLineCourante = slides[i].tagLine;
         const bannerTexte = document.querySelector("#banner p")
-        //banner.innerHTML = `<img src="assets/images/slideshow/${imageCourante}" alt="Slide ${i + 1}"/>`;
-        bannerTexte.innerHTML = `${tagLineCourante}`
-
         
-        
+       if (!document.querySelector('#img-banner')){
+	        banner.insertAdjacentHTML('afterbegin', `<img id="img-banner" src="assets/images/slideshow/${imageCourante}">`)
+	}else {
+		banner.firstElementChild.setAttribute('src', `assets/images/slideshow/${imageCourante}`)
+	    }
+    bannerTexte.innerHTML = (tagLineCourante);
     };
 
-    // Appeler la fonction pour afficher l'image initiale
     afficherImageCourante();
+
 };
 
-// Appeler la fonction
 défilementImage();
+
+const miseEnPlaceDots = () => {
+    const dots = document.querySelector(".dots")
+    const dotIndividuel = document.querySelectorAll(".dot")
+}

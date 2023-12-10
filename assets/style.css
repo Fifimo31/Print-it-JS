@@ -53,9 +53,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-body {
-
-}
 section {
 	margin-block: 6em;
 }
@@ -114,13 +111,13 @@ header {
 	position: relative;
 }
 .banner-img {
-	position: absolute;
+	
 	width: 100%;
 	height: 100%;
 	z-index: -1;
 	object-fit: cover;
 	object-position: center;
-}
+}*/
 /* Code CSS en prévision de l'ajout d'un carousel pour la bannière */
 /* Gestion des fleches du carrousel */
 #banner .arrow {
@@ -129,11 +126,12 @@ header {
 #banner .arrow_left {
 	left: -640px;
 	position: relative;
+	top: -290px;
 }
 #banner .arrow_right {
 	position: relative;
 	right: -640px;
-	top: -80px;
+	top: -350px;
 }
 /* Gestion des points du carrousel */
 .dots {
@@ -155,6 +153,8 @@ header {
 }
 /* Fin du code CSS pour le carousel */
 #banner p {
+	top: 180px;
+	position: absolute;
 	font-family: 'Roboto Slab', sans-serif;
 	font-weight: 900;
 	font-size: 50px;
