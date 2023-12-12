@@ -58,12 +58,13 @@ const défilementImage = () => {
         // Incrémenter l'index pour passer à la prochaine image
        // i = (i + 1) % slides.length;
         i++;
-	    console.log(i)
+	    
 	    if(i >= slides.length){
 		    i=0;
 	    }
         afficherImageCourante();
         
+        selectionDots()
         
     });
 
@@ -76,9 +77,11 @@ const défilementImage = () => {
 		i = slides.length - 1;
 		}
         afficherImageCourante();
-        
+        selectionDots()
         
     });
+
+    
 
 	 // Fonction pour afficher l'image courante
 	 const afficherImageCourante = () => {
@@ -93,9 +96,13 @@ const défilementImage = () => {
 		    banner.firstElementChild.setAttribute('src', `assets/images/slideshow/${imageCourante}`)
 	        }
         bannerTexte.innerHTML = (tagLineCourante);
+        
+       
     };
 
+
     afficherImageCourante();
+
 
 };
 
@@ -103,22 +110,31 @@ défilementImage();
 
 const miseEnPlaceDots = () => {
     const dots = document.querySelector(".dots")
-    const dotIndividuels = document.querySelectorAll(".dot")
     
+    let i = 0
     for (let numDot =0; numDot < slides.length; numDot++ ){
         dots.insertAdjacentHTML('afterbegin', '<div class="dot"></div>');
     }
-
-    const selectionDots = () => {
-        dotIndividuels.forEach((dot, index) => {
-            if (index === i) {
-                dot.classList.add('dot_selected');
-            } else {
-                dot.classList.remove('dot_selected');
-            }
-        })
-        
-    }
-    selectionDots()
+    
 }
 miseEnPlaceDots()
+let i = -1
+const selectionDots = () => {
+    const dots = document.querySelectorAll(".dot");
+    
+    i++
+    
+    for (let index = 0; index < dots.length; index++) {
+    
+        // Utilisez l'index pour déterminer si le point doit être sélectionné
+        if (index === i ) {
+            dots[index].classList.add("dot_selected");
+            console.log(dots[index])
+        } else {
+            dots[index].classList.remove("dot_selected");
+        }
+    }
+};
+selectionDots()
+
+
