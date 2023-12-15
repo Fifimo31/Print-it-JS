@@ -16,125 +16,13 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-console.log(slides[0].image)
+let imageTagline = slides.length
+const affichageImage = () => {
+    const banner = document.getElementById("banner")
+    let affichageImage =`<img id="img-banner" src="assets/images/slideshow/${slides[0].image}">` 
+    banner.innerHTML = affichageImage
 
-const emplacementFleche = () => {
-    const bannerFleche = document.getElementById("banner");
-    
-    // Créer l'élément image pour la flèche gauche
-    const flecheGauche = document.createElement("img");
-    flecheGauche.src = "assets/images/arrow_left.png";
-    flecheGauche.alt = "Flèche gauche";
-    flecheGauche.classList.add("arrow_left");
-
-    // Créer l'élément image pour la flèche droite
-    const flecheDroite = document.createElement("img");
-    flecheDroite.src = "assets/images/arrow_right.png";
-    flecheDroite.alt = "Flèche droite";
-    flecheDroite.classList.add("arrow_right");
-
-    // Ajouter les flèches au document
-    bannerFleche.appendChild(flecheGauche);
-    bannerFleche.appendChild(flecheDroite);
-
-	
-};
-
-// Appeler la fonction
-emplacementFleche();
-
-// Récupérer les éléments flecheGauche et flecheDroite en dehors de la fonction défilementImage pour les rendre accessibles globalement
-
-const flecheGauche = document.querySelector(".arrow_left");
-
-const flecheDroite = document.querySelector(".arrow_right");
-
-
-const défilementImage = () => {
-    let i = 0;
-
-    // Ajouter un écouteur d'événement sur la flèche droite
-    flecheDroite.addEventListener("click", (e) => {
-        // Incrémenter l'index pour passer à la prochaine image
-       // i = (i + 1) % slides.length;
-        i++;
-	    
-	    if(i >= slides.length){
-		    i=0;
-	    }
-        afficherImageCourante();
-        
-        selectionDots()
-        
-    });
-
-    // Ajouter un écouteur d'événement sur la flèche gauche
-    flecheGauche.addEventListener("click", (e) => {
-        // Décrémenter l'index pour revenir à l'image précédente
-        //i = (i - 1 + slides.length) % slides.length;
-        i--;
-	    if(i < 0){
-		i = slides.length - 1;
-		}
-        afficherImageCourante();
-        selectionDots()
-        
-    });
-
-    
-
-	 // Fonction pour afficher l'image courante
-	 const afficherImageCourante = () => {
-        const banner = document.getElementById("banner");
-        const imageCourante = slides[i].image;
-        const tagLineCourante = slides[i].tagLine;
-        const bannerTexte = document.querySelector("#banner p")
-        
-       if (!document.querySelector('#banner-img')){
-	        banner.insertAdjacentHTML('afterbegin', `<img id="banner-img" src="assets/images/slideshow/${imageCourante}">`)
-	    }else {
-		    banner.firstElementChild.setAttribute('src', `assets/images/slideshow/${imageCourante}`)
-	        }
-        bannerTexte.innerHTML = (tagLineCourante);
-        
-       
-    };
-
-
-    afficherImageCourante();
-
-
-};
-
-défilementImage();
-
-const miseEnPlaceDots = () => {
-    const dots = document.querySelector(".dots")
-    
-    let i = 0
-    for (let numDot =0; numDot < slides.length; numDot++ ){
-        dots.insertAdjacentHTML('afterbegin', '<div class="dot"></div>');
-    }
-    
 }
-miseEnPlaceDots()
-let i = -1
-const selectionDots = () => {
-    const dots = document.querySelectorAll(".dot");
-    
-    i++
-    
-    for (let index = 0; index < dots.length; index++) {
-    
-        // Utilisez l'index pour déterminer si le point doit être sélectionné
-        if (index === i ) {
-            dots[index].classList.add("dot_selected");
-            console.log(dots[index])
-        } else {
-            dots[index].classList.remove("dot_selected");
-        }
-    }
-};
-selectionDots()
 
+affichageImage()
 
