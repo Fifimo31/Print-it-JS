@@ -79,7 +79,7 @@ const defillementSlide = () => {
 		imageCourante++
 		console.log(imageCourante)
 		if(imageCourante>= imageTagline){
-		currentImage=0;
+		imageCourante=0;
 		}
 		affichageImage(imageCourante) 
 	})
