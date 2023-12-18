@@ -19,6 +19,17 @@ const slides = [
 let imageTagline = slides.length
 const banner = document.getElementById("banner")
 const bannerP = document.querySelector("#banner p")
+
+const affichageDots = () => {
+	const dots = document.querySelector(".dots")
+	for(let i = 0; i< imageTagline; i++){
+		dots.insertAdjacentHTML('afterbegin', '<div class="dot"></div>')
+	}
+	
+}
+affichageDots()
+
+
 const affichageImage = (i = 0) => { 
 	
 	
@@ -37,7 +48,18 @@ const affichageImage = (i = 0) => {
 	let affichageTagline = `${slides[i].tagLine}`
 	bannerP.innerHTML = affichageTagline
 	
-	return i
+	const dotIndividuelle = document.querySelectorAll(".dot")
+	console.log(dotIndividuelle)
+
+	dotIndividuelle.forEach((dot, index) => {
+		if (index === i) {
+		  dot.classList.add('dot_selected');
+		} else {
+		  dot.classList.remove('dot_selected');
+		}
+	  });
+	
+	  return i
 
 }
 
@@ -82,6 +104,7 @@ const defillementSlide = () => {
 		imageCourante=0;
 		}
 		affichageImage(imageCourante) 
+		
 	})
 
 	flecheGauche.addEventListener("click",() => {
@@ -90,8 +113,12 @@ const defillementSlide = () => {
 			imageCourante = imageTagline - 1;
 			}
 			affichageImage(imageCourante)
+			
 	})
 
 }
 defillementSlide()
+
+
+
 
